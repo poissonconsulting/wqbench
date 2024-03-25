@@ -221,7 +221,7 @@ reference files added. To do this run the function
 <ol start="2" style="list-style-type: decimal">
 <li>
 <p>Execute the code in the script
-<em>scripts/review-reference-datasets.R</em>.</p>
+<em>scripts/review-reference-datasets-01.R</em>.</p>
 <ul>
 <li>This script will generate and save a set of csv files that need to
 be reviewed and updated to allow new values through the data cleaning
@@ -243,7 +243,8 @@ groups have been updated.</li>
 </li>
 <li>
 <p>Once the files are reviewed the
-<em>script/update-reference-datasets.R</em> script needs to be run.</p>
+<em>script/update-reference-datasets-01.R</em> script needs to be
+run.</p>
 <ul>
 <li>This will read in the reviewed files and update the reference files
 in the <em>inst/extdata</em> folder.</li>
@@ -254,15 +255,13 @@ package.</p></li>
 <li><p>Run the <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function to create the
 database with the new reference data.</p></li>
 <li>
-<p>Then repeat this process but only send the life stage code review
-file to the client.</p>
+<p>Repeat steps 2 through 6 but run
+<em>scripts/review-reference-datasets-02.R</em> and
+<em>script/update-reference-datasets-01.R</em>.</p>
 <ul>
-<li>This file depends on the updates from the trophic groups, first the
-trophic groups need to be review, updated, integrated into the database
-and then the life stage codes can be reviewed.</li>
-<li>This also gives an opportunity to check the changes have been
-incoportated into the database and the other files should be fully up to
-date at this stage.</li>
+<li>The life stage codes have to be generated seperately as they are
+based on the trophic groups. The trophic groups need to be updated
+before life stage codes can be reviewed.</li>
 </ul>
 </li>
 </ol>
@@ -465,8 +464,8 @@ coding of the database.</li>
 fish and amphibian groups need the life stage categorized into simple
 groups.</li>
 <li>The goal of the review is to ensure all cells in the
-<strong>simple_lifestage</strong> column that have fish or amphibian in
-the <strong>trophic_group</strong> column are filled in.
+<strong>simple_lifestage</strong> column that have
+<strong>fish_amphibian_flag</strong> column as TRUE are filled in.
 <ul>
 <li>In the <strong>simple_lifestage</strong> column fill in the empty
 cell with either <code>els</code> (early life stage),

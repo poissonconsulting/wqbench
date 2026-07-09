@@ -140,7 +140,7 @@ test_that("check ssdtools functions directly", {
     data = df,
     left = "sp_aggre_conc_mg.L"
   ) |>
-    ssdtools::ssd_hc_bcanz(nboot = 10)
+    ssdtools::ssd_hc_bcanz(nboot = 10, ci = TRUE)
 
   expect_snapshot_data(output, "ssdtool_bcanz")
 })
@@ -260,7 +260,7 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
       data = df,
       left = "sp_aggre_conc_mg.L"
     ) |>
-      ssdtools::ssd_hc_bcanz(nboot = 100)
+      ssdtools::ssd_hc_bcanz(nboot = 100, ci = TRUE)
   )
 
   expect_equal(
@@ -270,12 +270,12 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
 
   expect_equal(
     signif(output$se, 3),
-    c(0.315, 0.329, 0.342, 0.368)
+    c(0.315, 0.330, 0.343, 0.370)
   )
 
   expect_equal(
     signif(output$lcl, 3),
-    c(0.225, 0.473, 0.666, 0.983)
+    c(0.224, 0.471, 0.665, 0.983)
   )
 
   expect_equal(

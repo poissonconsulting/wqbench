@@ -114,7 +114,7 @@ save_csv <- function(x) {
 }
 
 expect_snapshot_data <- function(x, name, digits = 6) {
-  fun <- function(x) signif(x, digits = digits)
+  fun <- function(x) if (is.numeric(x)) signif(x, digits = digits) else x
   lapply_fun <- function(x) I(lapply(x, fun))
   x <- dplyr::mutate(x, dplyr::across(dplyr::where(is.numeric), fun))
   x <- dplyr::mutate(x, dplyr::across(dplyr::where(is.list), lapply_fun))
